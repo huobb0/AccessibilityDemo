@@ -1,0 +1,8 @@
+<accessibility-service android:accessibilityEventTypes="typeViewClicked|typeViewFocused|typeAllMask"
+    android:packageNames="@null"
+    android:accessibilityFeedbackType="feedbackSpoken"
+    android:accessibilityFlags="flagDefault"
+    android:notificationTimeout="100"
+    android:settingsActivity="com.example.android.apis.accessibility.TestBackActivity"
+    android:canRetrieveWindowContent="true"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -1,4 +1,4 @@
-<accessibility-service android:accessibilityEventTypes="typeViewClicked|typeViewFocused|typeAllMask"
+<accessibility-service android:accessibilityEventTypes="typeAllMask"
     android:packageNames="@null"
     android:accessibilityFeedbackType="feedbackSpoken"
     android:accessibilityFlags="flagDefault"

